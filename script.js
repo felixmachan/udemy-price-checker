@@ -38,6 +38,9 @@ const coursesToTrack = [
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "networkidle2" });
 
+    let oldPriceStr = null;
+    let oldPriceNum = null;
+
     try {
       const title = await page.$eval("h1[data-purpose='lead-title']", (el) =>
         el.textContent.trim()
@@ -45,6 +48,17 @@ const coursesToTrack = [
 
       const oldPriceExists =
         (await page.$("div[data-purpose='course-old-price-text']")) !== null;
+
+      if (oldPriceExists) {
+        oldPriceStr = await page.$eval(
+          "div[data-purpose='course-old-price-text'] span:not([class])",
+          (el) => el.textContent.trim()
+        );
+        console.log(`Old price: ${oldPriceStr}`);
+        oldPriceNum = parseFloat(
+          oldPriceStr.replace(/[^\d.,]/g, "").replace(",", ".")
+        );
+      }
 
       const currentPriceStr = await page.$eval(
         "div[data-purpose='course-price-text'] span:not([class])",
@@ -76,7 +90,10 @@ const coursesToTrack = [
           currentPriceStr,
           currentPriceNum,
           remainingTime,
+          oldPriceNum,
+          oldPriceStr,
         });
+        console.log(results);
       } else {
         console.log(
           `❌ ${title} - $${currentPriceNum} (too expensive, max is €${maxPrice})`
@@ -104,9 +121,17 @@ const coursesToTrack = [
           course.url
         }" target="_blank">${course.url}</a></p>
         <div style="padding: 15px; background-color: #fff; border: 1px solid #ddd; border-radius: 6px; margin: 20px 0;">
-          <p style="font-size: 18px; margin: 0;"><strong>Price:</strong> ${
-            course.currentPriceStr
-          }</p>
+          <div style="display: flex; align-items: center; margin-bottom: 10px;">
+            <p style="font-size: 18px; margin: 0; margin-right: 10px;">
+                <strong>Price:</strong> ${course.currentPriceStr}
+            </p>
+            ${
+              course.oldPriceStr
+                ? `<p style="color: #999; font-size: 18px; margin: 0;"><s>${course.oldPriceStr}</s></p>`
+                : ""
+            }
+            </div>
+
           ${
             course.oldPriceExists
               ? `<p style="font-size: 16px; margin: 5px 0; color: #e53935;"><strong>Discounted price!</strong></p><p style="font-size: 16px; margin: 5px 0;">🔔 <strong>Only ${course.remainingTime} days left before the deal ends!</strong></p>`
