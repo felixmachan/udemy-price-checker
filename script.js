@@ -55,8 +55,8 @@ const courseUrl =
     let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: EMAIL_FROM, // a saját Gmail címed
-        pass: APP_PASSWORD, // Gmail app jelszó vagy normál jelszó (nem ajánlott)
+        user: EMAIL_FROM,
+        pass: APP_PASSWORD,
       },
     });
 
