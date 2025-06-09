@@ -14,7 +14,6 @@ That’s why I created this little script — to automate price tracking and sav
 - Headless browser for efficient scraping
 - Easy to extend or deploy
 
----
 
 ## 📦 Requirements
 
@@ -23,7 +22,6 @@ That’s why I created this little script — to automate price tracking and sav
 - `puppeteer-extra` and `puppeteer-extra-plugin-stealth`
 - `dotenv` for configuration management
 
----
 
 ## 🚀 Installation
 
@@ -70,6 +68,7 @@ You have to have Google 2FA enabled if you are using a gmail account to send ema
 
 ```
 
+
 ## 🧠 Usage
 
 Run the script using Node:
@@ -78,6 +77,7 @@ node script.js
 ```
 It will scrape each course URL, check the price, and send an email if any course is below its specified maximum price. 
 If you are willing to monitor prices continously, it's best practice to run it in a self-hosted LXC container or a VM with scheduled tasks with **cron** or **Cronicles OS.**
+
 
 ## ❌ Troubleshooting
 
@@ -159,6 +159,7 @@ const browser = await puppeteer.launch({
 
 If after all these steps the script still fails inside your LXC, consider testing on a lightweight VM or a physical machine to isolate LXC-specific issues.
 
+
 ## 📬 Email Preview
 
 The email contains:
@@ -178,13 +179,16 @@ The following are also in the roadmap:
 - Database-backed storage for tracking historical price changes
 - Scheduled runs (via cron, PM2, or GitHub Actions)
 
+
 ## 📄 License
 
 This project is open-source under the MIT License.
 
+
 ## 🤝 Contributing
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
+
 
 ## 🧑‍💻 Author
 
