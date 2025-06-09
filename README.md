@@ -121,29 +121,31 @@ If you run into issues running this project, here are the most common problems a
     at endReadableNT (node:internal/streams/readable:1400:12)
     at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
     ```
-This error can be worked out by installing Chromium separetly: 
+    This error can be worked out by installing Chromium separetly: 
 
-```bash
-npm i chromium
-```
-And changing adding the *executablePath* to the launch: 
+    ```bash
+    npm i chromium
+    ```
+    And changing adding the *executablePath* to the launch: 
 
-```js
-const browser = await puppeteer.launch({
-  executablePath: '/usr/bin/chromium', // vagy ahol a chromium van
-  args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
-});
+    ```js
+    const browser = await puppeteer.launch({
+      executablePath: '/usr/bin/chromium', // vagy ahol a chromium van
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
+    });
 
-```
+    ```
 
 ### 2. Memory Issues
 - Puppeteer’s Chromium is resource-heavy. Ideally, allocate **at least 2GB of RAM** to your container.
 - If you only have 1GB or less, expect instability or crashes.
 
+
 ### 3. Environment Variables & `.env` File
 - The project relies on a `.env` file for sensitive credentials (e.g., SMTP username/password).
 - Make sure the `.env` file is present in the project root and properly loaded.
 - Confirm your container user has permission to read the `.env` file.
+
 
 ### 4. SMTP Authentication Errors
 - Error like `Missing credentials for "PLAIN"` means your SMTP config is missing or incorrect.
@@ -168,6 +170,7 @@ The email contains:
 - Current price
 - Discount status and time left (if applicable)
 Emails are styled with clean HTML formatting for better readability.
+
 
 ## 🛠 Future Improvements
 
