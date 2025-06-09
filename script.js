@@ -5,7 +5,7 @@ require("dotenv").config();
 
 puppeteer.use(StealthPlugin());
 
-const YOUR_NAME = "Felix";
+const YOUR_NAME = process.env.NAME;
 const EMAIL_TO = process.env.EMAIL_TO;
 const EMAIL_FROM = process.env.EMAIL_FROM;
 const APP_PASSWORD = process.env.APP_PASSWORD;
