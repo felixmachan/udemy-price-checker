@@ -169,7 +169,7 @@ Emails are styled with clean HTML formatting for better readability.
 
 ## 🛠 Future Improvements
 
-As of right now, the script sends an email every time it reads the price and it's lower than the preset **maxPrice**. Later on, I'm planning to implement the functionality of only sending an email when the price is discounted or lower than the previously last known price.
+As of right now, the script sends an email every time it reads the price and it's lower than the preset `maxPrice`. Later on, I'm planning to implement the functionality of only sending an email when the price is discounted or lower than the previously last known price.
 The following are also in the roadmap: 
 
 - Web UI for adding/removing courses and changing thresholds
