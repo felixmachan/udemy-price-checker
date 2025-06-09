@@ -10,7 +10,7 @@ const EMAIL_TO = process.env.EMAIL_TO;
 const EMAIL_FROM = process.env.EMAIL_FROM;
 const APP_PASSWORD = process.env.APP_PASSWORD;
 
-// ⬇️ Kurzusok max árral
+// Courses to track
 const coursesToTrack = [
   {
     url: "https://www.udemy.com/course/complete-networking-fundamentals-course-ccna-start/",
@@ -26,11 +26,36 @@ const coursesToTrack = [
   },
 ];
 
+const launchOptionsBase = {
+  headless: true,
+  args: ["--no-sandbox", "--disable-setuid-sandbox"],
+};
+
+const executablePaths = [
+  "/usr/bin/chromium",
+  "C:/Program Files/Google/Chrome/Application/chrome.exe",
+];
+
+async function launchBrowserWithFallback() {
+  for (const path of executablePaths) {
+    try {
+      console.log(`Trying to launch browser at: ${path}`);
+      const browser = await puppeteer.launch({
+        ...launchOptionsBase,
+        executablePath: path,
+      });
+      console.log(`Launched browser at: ${path}`);
+      return browser;
+    } catch (err) {
+      // console.warn(`Failed to launch browser at ${path}: ${err.message}`);
+    }
+  }
+  // console.log("Falling back to Puppeteer Chromium");
+  return await puppeteer.launch(launchOptionsBase);
+}
+
 (async () => {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  const browser = await launchBrowserWithFallback();
 
   const results = [];
 
