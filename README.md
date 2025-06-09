@@ -132,7 +132,6 @@ If you run into issues running this project, here are the most common problems a
 - Ensure your email provider supports the SMTP settings you use.
 - Ensure you are using the correct port for the certain SMTP server.
 
----
 
 If after all these steps the script still fails inside your LXC, consider testing on a lightweight VM or a physical machine to isolate LXC-specific issues.
 
