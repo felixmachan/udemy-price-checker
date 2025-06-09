@@ -164,7 +164,7 @@ const coursesToTrack = [
     });
 
     const mailOptions = {
-      from: `"Udemy price checker" <${EMAIL_FROM}>`,
+      from: `"Udemy Discount Alert" <${EMAIL_FROM}>`,
       to: EMAIL_TO,
       subject: "📉 Udemy Price Drop Alert",
       text: "Some courses are now cheaper than your max price.",
