@@ -24,6 +24,10 @@ const courseUrl =
 
   await page.goto(courseUrl, { waitUntil: "networkidle2" });
 
+  const title = await page.$eval("h1[data-purpose='lead-title']", (el) =>
+    el.textContent.trim()
+  );
+
   const oldPriceExists =
     (await page.$("div[data-purpose='course-old-price-text']")) !== null;
 
@@ -67,11 +71,12 @@ const courseUrl =
       text: "error",
       html: `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 8px; background-color: #fafafa;">
-      <h2 style="color: #333;">🎓 Udemy Price Alert</h2>
+      <h1 style="color: #333;">🎓 Udemy Price Alert</h1>
       <p style="font-size: 16px; color: #444;">
         Hi ${YOUR_NAME}!<br><br>
         The price of a course you're following has changed. Here are the details:
       </p>
+        <h2 style="color: #555;">${title}</h2>
 
       <div style="padding: 15px; background-color: #fff; border: 1px solid #ddd; border-radius: 6px; margin: 20px 0;">
         <p style="font-size: 18px; margin: 0;"><strong>Price:</strong> ${currentPriceStr}</p>
