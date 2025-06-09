@@ -18,7 +18,7 @@ That’s why I created this little script — to automate price tracking and sav
 ## 📦 Requirements
 
 - Node.js (v16 or higher recommended)
-- A Gmail account with an App Password (for sending emails)
+- A Gmail account with an App Password (for sending emails if you're using a Gmail account)
 - `puppeteer-extra` and `puppeteer-extra-plugin-stealth`
 - `dotenv` for configuration management
 
@@ -78,6 +78,10 @@ node script.js
 ```
 It will scrape each course URL, check the price, and send an email if any course is below its specified maximum price. 
 If you are willing to monitor prices continously, it's best practice to run it in a self-hosted LXC container or a VM with scheduled tasks with **cron** or **Cronicles OS.**
+
+Something like this will be sent to your email: 
+
+![image](https://github.com/user-attachments/assets/1ccc539d-8369-4f45-90bc-6e846753f349)
 
 
 ## ❌ Troubleshooting
