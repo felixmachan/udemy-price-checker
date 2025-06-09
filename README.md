@@ -109,37 +109,6 @@ If you run into issues running this project, here are the most common problems a
     });
     ```
   - Ensure your LXC container allows necessary permissions or run the container in privileged mode if possible.
-  - You might run into the following error at first run:
-
-  ```bash
-  /opt/scripts/udemy-price-checker/udemy-price-checker/node_modules/@puppeteer/browsers/lib/cjs/launch.js:325
-                reject(new Error([
-                       ^
-  Error: Failed to launch the browser process!
-  TROUBLESHOOTING: https://pptr.dev/troubleshooting
-
-    at Interface.onClose (/opt/scripts/udemy-price-checker/udemy-price-checker/node_modules/@puppeteer/browsers/lib/cjs/launch.js:325:24)
-    at Interface.emit (node:events:529:35)
-    at Interface.close (node:internal/readline/interface:534:10)
-    at Socket.onend (node:internal/readline/interface:260:10)
-    at Socket.emit (node:events:529:35)
-    at endReadableNT (node:internal/streams/readable:1400:12)
-    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
-    ```
-    This error can be worked out by installing Chromium separetly: 
-
-    ```bash
-    npm i chromium
-    ```
-    And changing adding the *executablePath* to the launch: 
-
-    ```js
-    const browser = await puppeteer.launch({
-      executablePath: '/usr/bin/chromium', // vagy ahol a chromium van
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
-    });
-
-    ```
 
 ### 2. Memory Issues
 - Puppeteer’s Chromium is resource-heavy. Ideally, allocate **at least 2GB of RAM** to your container.
@@ -167,6 +136,16 @@ If you run into issues running this project, here are the most common problems a
 
 If after all these steps the script still fails inside your LXC, consider testing on a lightweight VM or a physical machine to isolate LXC-specific issues.
 
+## ⚙️ Compatibility
+The script is designed to run smoothly on both Linux and Windows environments. To ensure compatibility, it attempts to launch the browser from multiple common executable paths in sequence:
+
+`/usr/bin/chromium` (default Chromium path on Linux)
+
+`C:/Program Files/Google/Chrome/Application/chrome.exe` (default Chrome path on Windows)
+
+If none of these paths work, it falls back to Puppeteer’s bundled Chromium version.
+
+This fallback mechanism is built into the code to make sure the script works out-of-the-box on different operating systems without requiring manual configuration.
 
 ## 📬 Email Preview
 
