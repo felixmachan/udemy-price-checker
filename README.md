@@ -53,19 +53,26 @@ NAME=your_name
 ```
 You have to have Google 2FA enabled if you are using a gmail account to send emails from in order to get your App Password.
 
-4. **Define your courses list and max prices:**
+4. **Define your courses list and max prices in `config.json`:**
 
 ```js
-[
-  {
-    "url": "https://www.udemy.com/course/complete-networking-fundamentals-course-ccna-start/",
-    "maxPrice": 14.99
-  },
-  {
-    "url": "https://www.udemy.com/course/git-and-github-bootcamp/",
-    "maxPrice": 11.99
-  }
-]
+{
+  "coursesToTrack": [
+    {
+      "url": "https://www.udemy.com/course/complete-networking-fundamentals-course-ccna-start/",
+      "maxPrice": 14.0
+    },
+    {
+      "url": "https://www.udemy.com/course/complete-linux-training-course-to-get-your-dream-it-job/",
+      "maxPrice": 12.0
+    },
+    {
+      "url": "https://www.udemy.com/course/git-and-github-bootcamp/",
+      "maxPrice": 20.0
+    }
+  ]
+}
+
 
 ```
 
