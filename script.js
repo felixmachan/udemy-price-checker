@@ -32,8 +32,8 @@ const launchOptionsBase = {
 };
 
 const executablePaths = [
-  "/usr/bin/chromium",
-  "C:/Program Files/Google/Chrome/Application/chrome.exe",
+  "/usr/bin/chromium", // Linux default
+  "C:/Program Files/Google/Chrome/Application/chrome.exe", // Windows default
 ];
 
 async function launchBrowserWithFallback() {
