@@ -18,7 +18,7 @@ That’s why I created this little script — to automate price tracking and sav
 ## 📦 Requirements
 
 - Node.js (v16 or higher recommended)
-- A Gmail account with an App Password (for sending emails)
+- A Gmail account with an App Password (for sending emails if you're using a Gmail account)
 - `puppeteer-extra` and `puppeteer-extra-plugin-stealth`
 - `dotenv` for configuration management
 
