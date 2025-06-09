@@ -92,13 +92,8 @@ const courseUrls = [
         }</p>
         ${
           course.oldPriceExists
-            ? `<p style="font-size: 16px; margin: 5px 0; color: #e53935;"><strong>Discounted price!</strong></p>`
+            ? `<p style="font-size: 16px; margin: 5px 0; color: #e53935;"><strong>Discounted price!</strong></p><p style="font-size: 16px; margin: 5px 0;">🔔 <strong>Only ${course.remainingTime} days left before the deal ends!</strong></p>`
             : `<p style="font-size: 16px; margin: 5px 0;">Not discounted.</p>`
-        }
-        ${
-          course.oldPriceExists
-            ? `<p style="font-size: 16px; margin: 5px 0;">🔔 <strong>Only ${course.remainingTime} days left before the deal ends!</strong></p>`
-            : ""
         }
       </div>
     `;
