@@ -49,6 +49,7 @@ Insert the following:
 EMAIL_FROM=your.email@gmail.com
 EMAIL_TO=recipient.email@example.com
 APP_PASSWORD=your_gmail_app_password
+NAME=your_name
 ```
 You have to have Google 2FA enabled if you are using a gmail account to send emails from in order to get your App Password.
 
