@@ -76,7 +76,8 @@ Run the script using Node:
 ```bash
 node script.js
 ```
-It will scrape each course URL, check the price, and send an email if any course is below its specified maximum price. If you are willing to monitor prices continously, it's best practice to run it in a self-hosted LXC container or a VM with **cron** or **Cronicles OS.**
+It will scrape each course URL, check the price, and send an email if any course is below its specified maximum price. 
+If you are willing to monitor prices continously, it's best practice to run it in a self-hosted LXC container or a VM with scheduled tasks with **cron** or **Cronicles OS.**
 
 ## ❌ Troubleshooting
 
