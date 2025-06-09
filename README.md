@@ -152,7 +152,8 @@ If you run into issues running this project, here are the most common problems a
 - Error like `Missing credentials for "PLAIN"` means your SMTP config is missing or incorrect.
 - Double-check your `.env` contains the right credentials, e.g.:
     ```
-    EMAIL_TO=your_email
+    EMAIL_FROM=to_send_from
+    EMAIL_TO=to_send_to
     APP_PASSWORD=your_app_password
     ```
 - Ensure your email provider supports the SMTP settings you use.
